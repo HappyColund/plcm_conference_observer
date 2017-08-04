@@ -1,0 +1,237 @@
+<xs:schema xmlns="urn:com:polycom:api:rest:plcm-conference" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:plcm-cascade-link="urn:com:polycom:api:rest:plcm-cascade-link" xmlns:plcm-conference="urn:com:polycom:api:rest:plcm-conference" xmlns:plcm-ext="urn:com:polycom:api:rest:plcm-extensions" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" jxb:extensionBindingPrefixes="xjc" jxb:version="1.0" targetNamespace="urn:com:polycom:api:rest:plcm-conference" version="2012-06-06" xml:lang="en">
+    <xs:import namespace="urn:com:polycom:api:rest:plcm-cascade-link"/>
+    <xs:import namespace="http://www.w3.org/2005/Atom"/>
+    <xs:complexType name="PlcmConference">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="atom:link">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jxb:property name="atomLinkList"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="plcm-cascade-link:plcm-cascade-link">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jxb:property name="plcmCascadeLinkList"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="conference-identifier" type="ConferenceIdentifier">
+                <xs:annotation>
+                    <xs:documentation>
+              The unique identifier for this conference.  This system assigned identifier is not meaningful.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dial-in-number" type="DialInNumber">
+                <xs:annotation>
+                    <xs:documentation>
+              The dial string that can be used to call into the conference.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="conference-room-identifier" type="ConferenceRoomIdentifier">
+                <xs:annotation>
+                    <xs:documentation>
+              The unique identifier for the conference room.  This is the part of the dial in number after the prefix.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="mcu-name" type="McuName">
+                <xs:annotation>
+                    <xs:documentation>
+              The name of the MCU hosting the conference or the name of the hub MCU if this is a cascaded conference.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="cascade-mcu-name" type="CascadeMcuName">
+                <xs:annotation>
+                    <xs:documentation>
+              If this is a cascaded conference, the names of the hosting MCUs.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="owner-first-name" type="OwnerFirstName">
+                <xs:annotation>
+                    <xs:documentation>
+              The conference owner's first name.
+                 It is set to be the same as conference room owner's first name.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="owner-last-name" type="OwnerLastName">
+                <xs:annotation>
+                    <xs:documentation>
+              The conference owner's last name.
+                 It is set to be the same as conference room owner's last name.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="host-name" type="HostName">
+                <xs:annotation>
+                    <xs:documentation>
+              The hostname of the conference host.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="recording-active" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>
+              Indicates whether the conference is currently being recorded.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="display-text" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+              The display text of the conference.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="passback" type="Passback">
+                <xs:annotation>
+                    <xs:documentation>
+              User defined value for that is opaque to the system.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="passthru" type="Passthru">
+                <xs:annotation>
+                    <xs:documentation>
+              User defined value that that is opaque to the system.
+                 Note: that this parameter can be used to pass through to other, internal, 
+                 persistent areas of the system such as Call Data Records.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="entity-tag" type="EntityTag">
+                <xs:annotation>
+                    <xs:documentation>
+              The unique value generated from the server object instance. This value is the same value that 
+              	be applied to the HTTP Entity Tag (ETag) header for a single instance of this object.  Client 
+              	modification of this field is not allowed for this instance.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="supported-layout" type="SupportedLayout">
+                <xs:annotation>
+                    <xs:documentation>
+              The names of the supported video layouts defined by the MCU hosting the conference.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="current-layout" type="CurrentLayout">
+                <xs:annotation>
+                    <xs:documentation>
+              The name of the current video layout used by the MCU for the conference.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="conference-locked" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>
+              Indicates whether the conference is currently locked, preventing new participants to enter the conference.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="join-new-calls-muted" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>
+              Indicates whether the conference will audio mute new callers.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="start-time" type="xs:dateTime">
+        </xs:element>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="CurrentLayout">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SupportedLayout">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EntityTag">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="64"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Passthru">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="512"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Passback">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="512"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="HostName">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="OwnerLastName">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="64"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="OwnerFirstName">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="64"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CascadeMcuName">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="McuName">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ConferenceRoomIdentifier">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DialInNumber">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ConferenceIdentifier">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="128"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="plcm-conference" type="PlcmConference">
+        <xs:annotation>
+            <xs:documentation>
+        An active multipoint conference.
+        Content-Type: application/vnd.plcm.plcm-conference+xml.
+        All attributes are used in ETag calculation except for owner-first-name, owner-last-name, entity-tag and atom-link.
+      </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

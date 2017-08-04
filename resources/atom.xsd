@@ -1,0 +1,32 @@
+<xs:schema xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2005/Atom">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <!-- Common attributes -->
+    <xs:attributeGroup name="atomCommonAttributes">
+        <xs:attribute ref="xml:base"/>
+        <xs:attribute ref="xml:lang"/>
+    </xs:attributeGroup>
+    <!-- atom:link -->
+    <xs:element name="link">
+        <xs:complexType>
+            <xs:attributeGroup ref="atom:atomCommonAttributes"/>
+            <xs:attribute name="href" use="required"/>
+            <xs:attribute name="rel"/>
+            <xs:attribute name="type" type="atom:atomMediaType"/>
+            <xs:attribute name="hreflang" type="atom:atomLanguageTag"/>
+            <xs:attribute name="title"/>
+            <xs:attribute name="length"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- Whatever a media type is, it contains at least one slash -->
+    <xs:simpleType name="atomMediaType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".+/.+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- As defined in RFC 3066 -->
+    <xs:simpleType name="atomLanguageTag">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z]{1,8}(-[A-Za-z0-9]{1,8})*"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

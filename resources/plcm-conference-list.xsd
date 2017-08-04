@@ -1,0 +1,23 @@
+<xs:schema xmlns="urn:com:polycom:api:rest:plcm-conference-list" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:plcm-conference="urn:com:polycom:api:rest:plcm-conference" xmlns:plcm-conference-list="urn:com:polycom:api:rest:plcm-conference-list" xmlns:plcm-ext="urn:com:polycom:api:rest:plcm-extensions" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" jxb:extensionBindingPrefixes="xjc" jxb:version="1.0" targetNamespace="urn:com:polycom:api:rest:plcm-conference-list" version="2012-06-06" xml:lang="en">
+    <xs:import namespace="urn:com:polycom:api:rest:plcm-conference"/>
+    <xs:complexType name="PlcmConferenceList">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="plcm-conference:plcm-conference">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jxb:property name="plcmConferenceList"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="plcm-conference-list" type="PlcmConferenceList">
+        <xs:annotation>
+            <xs:documentation>
+        A list of active multipoint conferences.
+        Content-Type: application/vnd.plcm.plcm-conference-list+xml.
+        All attributes are used in ETag calculation.
+      </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

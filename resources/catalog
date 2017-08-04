@@ -1,0 +1,27 @@
+<!DOCTYPE catalog>
+
+<!--
+catalog.dtd reference commented out to allow it to be used when build machine does not have
+internet connectivity.
+<!DOCTYPE catalog
+  PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+         "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+-->         
+<!--
+(C) Polycom, Inc. 2012. All Rights Reserved.
+No portion of this work may be copied for any purpose without the prior written permission of Polycom, Inc.
+-->
+         
+         
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <public publicId="-//W3C//DTD XMLSCHEMA 200102//EN"  uri="schema-references/XMLSchema.dtd"/>
+    <public publicId="datatypes"  uri="schema-references/datatypes.dtd"/>
+    <public publicId='http://www.w3.org/XML/1998/namespace' uri='schema-references/xml.xsd'/>
+
+    <public publicId='http://www.w3.org/2005/Atom'                    uri='src/main/resources/atom.xsd'/>
+    <public publicId='urn:com:polycom:api:rest:plcm-conference'       uri='src/main/resources/plcm-conference.xsd'/>
+    <public publicId='urn:com:polycom:api:rest:plcm-cascade-link'       uri='src/main/resources/plcm-cascade-link.xsd'/>
+    <public publicId='urn:com:polycom:api:rest:plcm-conference-list'  uri='src/main/resources/plcm-conference-list.xsd'/>
+    <public publicId='urn:com:polycom:api:rest:plcm-notification'     uri='src/main/resources/plcm-notification.xsd'/>
+</catalog>
+

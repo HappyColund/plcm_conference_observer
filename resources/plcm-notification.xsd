@@ -1,0 +1,50 @@
+<xs:schema xmlns="urn:com:polycom:api:rest:plcm-cascade-link" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:plcm-cascade-link="urn:com:polycom:api:rest:plcm-cascade-link" xmlns:plcm-ext="urn:com:polycom:api:rest:plcm-extensions" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" jxb:extensionBindingPrefixes="xjc" jxb:version="1.0" targetNamespace="urn:com:polycom:api:rest:plcm-cascade-link" version="2012-06-06" xml:lang="en">
+    <xs:import namespace="http://www.w3.org/2005/Atom"/>
+    <xs:complexType name="PlcmCascadeLink">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="atom:link">
+                <xs:annotation>
+                    <xs:appinfo>
+                        <jxb:property name="atomLinkList"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="cascade-link-identifier" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+              Unique identifier of the cascade link.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+              Name of the cascade link.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="from-mcu-name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+              Name of the initiating MCU.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="to-mcu-name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+              Name of the receiving MCU.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="plcm-cascade-link" type="PlcmCascadeLink">
+        <xs:annotation>
+            <xs:documentation>
+        Cascade link between two MCUs.
+      </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

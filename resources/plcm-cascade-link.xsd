@@ -1,0 +1,79 @@
+<xs:schema xmlns="urn:com:polycom:api:rest:plcm-notification" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:plcm-notification="urn:com:polycom:api:rest:plcm-notification" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" jxb:extensionBindingPrefixes="xjc" jxb:version="1.0" targetNamespace="urn:com:polycom:api:rest:plcm-notification" version="2012-06-06" xml:lang="en">
+    <xs:complexType name="PlcmNotification">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="notification-type" type="NotificationType">
+                <xs:annotation>
+                    <xs:documentation>
+              The type of event which is described in the notification
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="subscription-url" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+              The URL of the subscription that this notification is associated with
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="resource-url" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+              The URL of the resource monitored by the subscription
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="sequence-number" type="xs:unsignedLong">
+                <xs:annotation>
+                    <xs:documentation>
+              The number of this current notification. The number starts at 1 and increases 
+                 by 1 for each notification. This may be used to determine if a notification was 
+                 missed
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="passback" type="Passback">
+                <xs:annotation>
+                    <xs:documentation>
+              User defined value for that is opaque to the system
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="passthru" type="Passthru">
+                <xs:annotation>
+                    <xs:documentation>
+              User defined value that that is opaque to the system.
+                 Note: that this parameter can be used to pass through to other, internal, 
+                 persistent areas of the system such as Call Data Records.
+            </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="Passthru">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="512"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Passback">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="512"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NotificationType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ADD"/>
+            <xs:enumeration value="UPDATE"/>
+            <xs:enumeration value="DELETE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="plcm-notification" type="PlcmNotification">
+        <xs:annotation>
+            <xs:documentation>
+        A notification of an event happening on the Polycom server
+      </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>
